@@ -46,7 +46,7 @@ AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   taxon_info = "scores";    // Which trait should we identify unique taxa based on
   data_file_name = "phylogenetic_data.csv";// Filename for systematics data file.
   snapshot_file_root_name = "phylogeny";// Filename for snapshot files (will have update number and .csv appended to end)
-  snapshot_updates = "1000:1:1000";    // Which updates should we output a snapshot of the phylogeny?
+  snapshot_updates = "50000:1:50000";    // Which updates should we output a snapshot of the phylogeny?
   data_updates = "0:10";       // Which updates should we output a data from the phylogeny?
 }
 ValsOrg vals_org {              // Organism consisting of a series of N floating-point values.
@@ -72,4 +72,4 @@ ValsOrg vals_org {              // Organism consisting of a series of N floating
 
 @start(0) print("random_seed = ", random_seed, "\n");
 @start(0) inject("vals_org", "main_pop", pop_size);
-@update(1000) exit();
+@update(50000) exit();
