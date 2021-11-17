@@ -1,4 +1,3 @@
-
 #!/bin/bash
 ########## Define Resources Needed with SBATCH Lines ##########
 
@@ -84,6 +83,6 @@ RUN_DIR=${DATA_DIR}/DIAGNOSTIC_${DIAGNOSTIC}/${NAME}/
 # make a run directory
 mkdir -p ${RUN_DIR}
 
-echo "../MABE -f ../config/PhylodiversityDiagnostics.mabe --set random_seed=${SEED} --set eval_diagnostic=${DIAGNOSTIC} --set output2.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\"> run.log" > ./cmd-coh.txt
+echo "../../MABE2/build/MABE -f ../config/PhylodiversityDiagnostics.mabe --set random_seed=${SEED} --set eval_diagnostic=${DIAGNOSTIC} --set output2.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\"> run.log" > ./cmd-coh.txt
 
-../MABE -f ../config/PhylodiversityDiagnostics.mabe --set random_seed=${SEED} --set eval_diagnostic=${DIAGNOSTIC} --set output2.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\"
+../../MABE2/build/MABE -f ../config/PhylodiversityDiagnostics.mabe --set random_seed=${SEED} --set eval_diagnostic=${DIAGNOSTIC} --set output2.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\"
