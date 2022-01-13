@@ -55,22 +55,27 @@ GENERATIONS=50000
 if [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__1__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_1}__SEED_${SEED}
   DIAGNOSTIC=${DIAGNOSTIC_1}
+  MABE_FILE=../config/PhylodiversityDiagnostics-exploit.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__2__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__2__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_2}__SEED_${SEED}
   DIAGNOSTIC=${DIAGNOSTIC_2}
+  MABE_FILE=../config/PhylodiversityDiagnostics-struct_exploit.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
   DIAGNOSTIC=${DIAGNOSTIC_3}
+  MABE_FILE=../config/PhylodiversityDiagnostics-diversity.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__4__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__4__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_4}__SEED_${SEED}
   DIAGNOSTIC=${DIAGNOSTIC_4}
+  MABE_FILE=../config/PhylodiversityDiagnostics-explore.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__5__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__5__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_5}__SEED_${SEED}
   DIAGNOSTIC=${DIAGNOSTIC_5}
+  MABE_FILE=../config/PhylodiversityDiagnostics-weak_diversity.mabe
   
 else
   echo "${SEED} from ${PROBLEM} failed to launch" >> /mnt/gs18/scratch/users/shahban1/ps-coh-failtolaunch.txt
@@ -83,6 +88,6 @@ RUN_DIR=${DATA_DIR}/DIAGNOSTIC_${DIAGNOSTIC}/${NAME}/
 # make a run directory
 mkdir -p ${RUN_DIR}
 
-echo "../../MABE2/build/MABE -f ../config/PhylodiversityDiagnostics.mabe --set random_seed=${SEED} --set eval_diagnostic=\\\"${DIAGNOSTIC}\\\" --set output2.filename=\\\"${RUN_DIR}/output.csv\\\" --set sys.snapshot_file_root_name=\\\"${RUN_DIR}/phylogeny\\\" --set sys.data_file_name=\\\"${RUN_DIR}/phylogenetic_data.csv\\\"> run.log" > ./cmd-coh.txt
+echo "../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set eval_diagnostic=\\\"${DIAGNOSTIC}\\\" --set output2.filename=\\\"${RUN_DIR}/output.csv\\\" --set sys.snapshot_file_root_name=\\\"${RUN_DIR}/phylogeny\\\" --set sys.data_file_name=\\\"${RUN_DIR}/phylogenetic_data.csv\\\"> run.log" > ./cmd-coh.txt
 
-../../MABE2/build/MABE -f ../config/PhylodiversityDiagnostics.mabe --set random_seed=${SEED} --set eval_diagnostic=\"${DIAGNOSTIC}\" --set output2.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\"
+../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set eval_diagnostic=\"${DIAGNOSTIC}\" --set output2.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\"
