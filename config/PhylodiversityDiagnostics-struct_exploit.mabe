@@ -25,12 +25,14 @@ FileOutput output2 {             // Output collected data into a specified file.
   target = "main_pop";          // Which population(s) should we print from?
   output_updates = "0:1";       // Which updates should we output data?
 }
-SelectTournament select_tourny { // Select the top fitness organisms from random subgroups for replication.
+SelectLexicase select_l {       // Shuffle traits each time an organism is chose for replication.
+  _active = 1;                  // Should we activate this module? (0=off, 1=on)
+  _desc = "";                   // Special description for those object.
   select_pop = "main_pop";      // Which population should we select parents from?
   birth_pop = "next_pop";       // Which population should births go into?
-  tournament_size = 8;          // Number of orgs in each tournament
-  num_tournaments = pop_size;          // Number of tournaments to run
-  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
+  fitness_traits = "fitness";    // Which traits provide the fitness values to use?
+  epsilon = 0.1;                // Range from max value to be preserved? (fraction of max)
+  num_births = pop_size;        // Number of offspring organisms to produce
 }
 GrowthPlacement place_next {    // Always appened births to the end of a population.
   target = "main_pop,next_pop"; // Population(s) to manage.
