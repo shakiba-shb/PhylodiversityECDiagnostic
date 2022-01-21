@@ -33,7 +33,7 @@ SelectFitnessSharing select_f { // Select the top fitness organisms from random 
   fitness_trait = "fitness";    // Which trait provides the fitness value to use?
   sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
   alpha = 1;                    // Sharing function exponent
-  sharing_threshold = 4.67495e-310;// How similar things need to be to share fitness
+  sharing_threshold = 2;// How similar things need to be to share fitness
 }
 SelectTournament select_tourny { // Select the top fitness organisms from random subgroups for replication.
   select_pop = "main_pop";      // Which population should we select parents from?

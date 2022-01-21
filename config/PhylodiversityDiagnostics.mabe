@@ -1,8 +1,8 @@
-random_seed = 0;      // Seed for random number generator; use 0 to base on time.
+random_seed = 195299189;        // Seed for random number generator; use 0 to base on time.
 Population main_pop;            // Collection of organisms
 Population next_pop;            // Collection of organisms
 Value pop_size = 500;           // Local value variable.
-Value generations = 50000;       // Local value variable.
+Value generations = 1000;       // Local value variable.
 CommandLine cl {                // Handle basic I/O on the command line.
   format = "fitness:max,fitness:mean";// Column format to use in the file.
   target = "main_pop";          // Which population(s) should we print from?
@@ -11,8 +11,8 @@ EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diag
   target = "main_pop";          // Which population(s) should we evaluate?
   vals_trait = "vals";          // Which trait stores the values to evaluate?
   scores_trait = "scores";      // Which trait should we store revised scores in?
-  total_trait = "fitness";        // Which trait should we store the total score in?
-  diagnostic = "explore";       // Which Diagnostic should we use?
+  total_trait = "total";        // Which trait should we store the total score in?
+  diagnostic = "UNKNOWN";       // Which Diagnostic should we use?
                                 //  exploit: All values must independently optimize to the max.
                                 //  struct_exploit: Values must decrease from begining AND optimize.
                                 //  explore: Only count max value and decreasing values after it.
@@ -21,18 +21,34 @@ EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diag
 }
 FileOutput output2 {             // Output collected data into a specified file.
   filename = "output.csv";      // Name of file for output data.
-  format = "fitness:max,fitness:mean";// Column format to use in the file.
+  format = "fitness:max,fitness:mean,scores:entropy,scores:unique";// Column format to use in the file.
   target = "main_pop";          // Which population(s) should we print from?
   output_updates = "0:1";       // Which updates should we output data?
 }
-SelectLexicase select_l {       // Shuffle traits each time an organism is chose for replication.
-  _active = 1;                  // Should we activate this module? (0=off, 1=on)
-  _desc = "";                   // Special description for those object.
+SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
   select_pop = "main_pop";      // Which population should we select parents from?
   birth_pop = "next_pop";       // Which population should births go into?
-  fitness_traits = "fitness";    // Which traits provide the fitness values to use?
-  epsilon = 0.1;                // Range from max value to be preserved? (fraction of max)
-  num_births = pop_size;        // Number of offspring organisms to produce
+  tournament_size = 7;          // Number of orgs in each tournament
+  num_tournaments = 0;          // Number of tournaments to run
+  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
+  sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
+  alpha = 1;                    // Sharing function exponent
+  sharing_threshold = 4.67495e-310;// How similar things need to be to share fitness
+}
+SelectTournament select_tourny { // Select the top fitness organisms from random subgroups for replication.
+  select_pop = "main_pop";      // Which population should we select parents from?
+  birth_pop = "next_pop";       // Which population should births go into?
+  tournament_size = 7;          // Number of orgs in each tournament
+  num_tournaments = pop_size;          // Number of tournaments to run
+  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
+}
+SelectLexicase select_l {       // Shuffle traits each time an organism is chose for replication.
+  select_pop = "main_pop";      // Which population should we select parents from?
+  birth_pop = "next_pop";       // Which population should births go into?
+  fitness_traits = "scores";          // Which traits provide the fitness values to use?
+  epsilon = 0;                  // Range from max value to be preserved? (fraction of max)
+  num_births = 0;               // Number of offspring organisms to produce
+  sample_traits = 0;            // Number of test cases to use each generation (0=all)
 }
 GrowthPlacement place_next {    // Always appened births to the end of a population.
   target = "main_pop,next_pop"; // Population(s) to manage.
@@ -45,11 +61,11 @@ MovePopulation sync_gen {       // Move organisms from one populaiton to another
 AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   store_outside = 0;            // Store all taxa that ever existed.(1 = TRUE)
   store_ancestors = 1;          // Store all ancestors of extant taxa.(1 = TRUE)
-  taxon_info = "scores";    // Which trait should we identify unique taxa based on
+  taxon_info = "taxon_info";    // Which trait should we identify unique taxa based on
   data_file_name = "phylogenetic_data.csv";// Filename for systematics data file.
   snapshot_file_root_name = "phylogeny";// Filename for snapshot files (will have update number and .csv appended to end)
-  snapshot_updates = "50000:1:50000";    // Which updates should we output a snapshot of the phylogeny?
-  data_updates = "0:10";       // Which updates should we output a data from the phylogeny?
+  snapshot_updates = "-1:1";    // Which updates should we output a snapshot of the phylogeny?
+  data_updates = "-1:-1";       // Which updates should we output a data from the phylogeny?
 }
 ValsOrg vals_org {              // Organism consisting of a series of N floating-point values.
   N = 100;                      // Number of values in organism
@@ -57,21 +73,21 @@ ValsOrg vals_org {              // Organism consisting of a series of N floating
   mut_size = 1;                 // Standard deviation on size of mutations.
   min_value = 0;                // Lower limit for value fields.
   max_value = 100;              // Upper limit for value fields.
-  lower_bound = "clamp";      // How should the lower limit be enforced?
+  lower_bound = "rebound";      // How should the lower limit be enforced?
                                 //  no_limit: Allow values to be arbirarily low.
                                 //  clamp: Reduce too-low values to min_value.
                                 //  wrap: Make low values loop around to maximum.
                                 //  rebound: Make low values 'bounce' back up.
-  upper_bound = "clamp";      // How should the upper limit be enforced?
+  upper_bound = "rebound";      // How should the upper limit be enforced?
                                 //  no_limit: Allow values to be arbirarily high.
                                 //  clamp: Reduce too-high values to max_value.
                                 //  wrap: Make high values loop around to minimum.
                                 //  rebound: Make high values 'bounce' back down.
   output_name = "vals";         // Name of variable to contain set of values.
   total_name = "total";         // Name of variable to contain total of all values.
-  init_random = 0;              // Should we randomize ancestor?  (0 = all 0.0)
+  init_random = 1;              // Should we randomize ancestor?  (0 = all 0.0)
 }
 
 @start(0) print("random_seed = ", random_seed, "\n");
 @start(0) inject("vals_org", "main_pop", pop_size);
-@update(50000) exit();
+@update(1000) exit();

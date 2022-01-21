@@ -7,7 +7,9 @@ Value generations = 1000;
 CommandLine cl; //Let's you add arguments as command lines.
 EvalDiagnostic eval_diagnostic; 
 FileOutput output; // Contains max and min fitness.
-//SelectTournament select_tourny;
+SelectFitnessSharing select_f;
+//SelectElite select_e;
+SelectTournament select_tourny;
 SelectLexicase select_l;
 GrowthPlacement place_next; // When something new is added how is it added?
 MovePopulation sync_gen; 
