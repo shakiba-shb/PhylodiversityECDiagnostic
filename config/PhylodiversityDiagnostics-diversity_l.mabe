@@ -12,7 +12,7 @@ EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diag
   vals_trait = "vals";          // Which trait stores the values to evaluate?
   scores_trait = "scores";      // Which trait should we store revised scores in?
   total_trait = "fitness";        // Which trait should we store the total score in?
-  diagnostic = "UNKNOWN";       // Which Diagnostic should we use?
+  diagnostic = "diversity";       // Which Diagnostic should we use?
                                 //  exploit: All values must independently optimize to the max.
                                 //  struct_exploit: Values must decrease from begining AND optimize.
                                 //  explore: Only count max value and decreasing values after it.
