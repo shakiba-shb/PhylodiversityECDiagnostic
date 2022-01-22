@@ -65,7 +65,7 @@ AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   data_file_name = "phylogenetic_data.csv";// Filename for systematics data file.
   snapshot_file_root_name = "phylogeny";// Filename for snapshot files (will have update number and .csv appended to end)
   snapshot_updates = "-1:1";    // Which updates should we output a snapshot of the phylogeny?
-  data_updates = "-1:-1";       // Which updates should we output a data from the phylogeny?
+  data_updates = "0:10";       // Which updates should we output a data from the phylogeny?
 }
 ValsOrg vals_org {              // Organism consisting of a series of N floating-point values.
   N = 100;                      // Number of values in organism
