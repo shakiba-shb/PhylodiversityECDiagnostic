@@ -11,7 +11,7 @@ EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diag
   target = "main_pop";          // Which population(s) should we evaluate?
   vals_trait = "vals";          // Which trait stores the values to evaluate?
   scores_trait = "scores";      // Which trait should we store revised scores in?
-  total_trait = "total";        // Which trait should we store the total score in?
+  total_trait = "fitness";        // Which trait should we store the total score in?
   diagnostic = "UNKNOWN";       // Which Diagnostic should we use?
                                 //  exploit: All values must independently optimize to the max.
                                 //  struct_exploit: Values must decrease from begining AND optimize.
@@ -61,7 +61,7 @@ MovePopulation sync_gen {       // Move organisms from one populaiton to another
 AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   store_outside = 0;            // Store all taxa that ever existed.(1 = TRUE)
   store_ancestors = 1;          // Store all ancestors of extant taxa.(1 = TRUE)
-  taxon_info = "taxon_info";    // Which trait should we identify unique taxa based on
+  taxon_info = "scores";    // Which trait should we identify unique taxa based on
   data_file_name = "phylogenetic_data.csv";// Filename for systematics data file.
   snapshot_file_root_name = "phylogeny";// Filename for snapshot files (will have update number and .csv appended to end)
   snapshot_updates = "-1:1";    // Which updates should we output a snapshot of the phylogeny?
