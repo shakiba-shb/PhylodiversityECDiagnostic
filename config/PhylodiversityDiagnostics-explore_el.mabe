@@ -46,7 +46,7 @@ SelectLexicase select_l {       // Shuffle traits each time an organism is chose
   select_pop = "main_pop";      // Which population should we select parents from?
   birth_pop = "next_pop";       // Which population should births go into?
   fitness_traits = "scores";          // Which traits provide the fitness values to use?
-  epsilon = .1;                  // Range from max value to be preserved? (fraction of max)
+  epsilon = 0.1;                  // Range from max value to be preserved? (fraction of max)
   num_births = pop_size;               // Number of offspring organisms to produce
   sample_traits = 0;            // Number of test cases to use each generation (0=all)
 }
