@@ -28,7 +28,7 @@ FileOutput output2 {             // Output collected data into a specified file.
 SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
   select_pop = "main_pop";      // Which population should we select parents from?
   birth_pop = "next_pop";       // Which population should births go into?
-  tournament_size = 7;          // Number of orgs in each tournament
+  tournament_size = 8;          // Number of orgs in each tournament
   num_tournaments = 0;          // Number of tournaments to run
   fitness_trait = "fitness";    // Which trait provides the fitness value to use?
   sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
@@ -73,19 +73,19 @@ ValsOrg vals_org {              // Organism consisting of a series of N floating
   mut_size = 1;                 // Standard deviation on size of mutations.
   min_value = 0;                // Lower limit for value fields.
   max_value = 100;              // Upper limit for value fields.
-  lower_bound = "rebound";      // How should the lower limit be enforced?
+  lower_bound = "clamp";      // How should the lower limit be enforced?
                                 //  no_limit: Allow values to be arbirarily low.
                                 //  clamp: Reduce too-low values to min_value.
                                 //  wrap: Make low values loop around to maximum.
                                 //  rebound: Make low values 'bounce' back up.
-  upper_bound = "rebound";      // How should the upper limit be enforced?
+  upper_bound = "clamp";      // How should the upper limit be enforced?
                                 //  no_limit: Allow values to be arbirarily high.
                                 //  clamp: Reduce too-high values to max_value.
                                 //  wrap: Make high values loop around to minimum.
                                 //  rebound: Make high values 'bounce' back down.
   output_name = "vals";         // Name of variable to contain set of values.
   total_name = "total";         // Name of variable to contain total of all values.
-  init_random = 1;              // Should we randomize ancestor?  (0 = all 0.0)
+  init_random = 0;              // Should we randomize ancestor?  (0 = all 0.0)
 }
 
 @start(0) print("random_seed = ", random_seed, "\n");
