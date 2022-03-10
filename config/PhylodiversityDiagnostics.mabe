@@ -6,6 +6,9 @@ Var generations = 20000;       // Local value variable.
 Var selection_type = 0;
 Var diagnostic = 0;
 
+IF(selection_type != 3){select_l.epsilon=0;};
+IF(selection_type == 4){select_tourny.tournament_size = 1;};
+
 EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diagnostic problem.
   vals_trait = "vals";          // Which trait stores the values to evaluate?
   scores_trait = "scores";      // Which trait should we store revised scores in?
@@ -25,17 +28,14 @@ IF(diagnostic==3){eval_diagnostic.diagnostic="diversity";};
 IF(diagnostic==4){eval_diagnostic.diagnostic="weak_diversity";};
 
 
-//SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
-//  _active = 0;
-//  select_pop = "main_pop";      // Which population should we select parents from?
-// birth_pop = "next_pop";       // Which population should births go into?
-//  tournament_size = 8;          // Number of orgs in each tournament
-//num_tournaments = pop_size;          // Number of tournaments to run
-//  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
-//sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
-//  alpha = 1;                    // Sharing function exponent
-//  sharing_threshold = 2;// How similar things need to be to share fitness
-//}
+SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
+  tournament_size = 8;          // Number of orgs in each tournament
+
+  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
+  sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
+  alpha = 1;                    // Sharing function exponent
+  sharing_threshold = 2;// How similar things need to be to share fitness
+};
 
 SelectTournament select_tourny { // Select the top fitness organisms from random subgroups for replication.
   tournament_size = 7;          // Number of orgs in each tournament
@@ -119,6 +119,22 @@ fit_file.ADD_COLUMN( "scores:unique", "main_pop.CALC_RICHNESS('scores')" );
     // Lexicase selection
     select_l.SELECT(main_pop, next_pop, pop_size);
   }
+  
+  IF(selection_type == 2) {
+    // Fitness Sharing selection
+    select_f.SELECT(main_pop, next_pop, pop_size);
+  }
+  
+  IF(selection_type == 3) {
+    // epsilon lexicase selection
+    select_l.SELECT(main_pop, next_pop, pop_size);
+  }
+  
+  IF(selection_type == 4) {
+    // random selection
+    select_tourny.SELECT(main_pop, next_pop, pop_size);
+  }
+  
 
   main_pop.REPLACE_WITH(next_pop);
 }
