@@ -6,9 +6,6 @@ Var generations = 20000;       // Local value variable.
 Var selection_type = 0;
 Var diagnostic = 0;
 
-IF(selection_type != 3){select_l.epsilon=0;};
-IF(selection_type == 4){select_tourny.tournament_size = 1;};
-
 EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diagnostic problem.
   vals_trait = "vals";          // Which trait stores the values to evaluate?
   scores_trait = "scores";      // Which trait should we store revised scores in?
@@ -47,6 +44,9 @@ SelectLexicase select_l {       // Shuffle traits each time an organism is chose
   epsilon = 0;                  // Range from max value to be preserved? (fraction of max)
   sample_traits = 0;            // Number of test cases to use each generation (0=all)
 };
+
+IF(selection_type != 3){select_l.epsilon=0;};
+IF(selection_type == 4){select_tourny.tournament_size = 1;};
 
 AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   store_outside = 0;            // Store all taxa that ever existed.(1 = TRUE)
