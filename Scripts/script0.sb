@@ -34,9 +34,6 @@ SELECTION_SCHEME_3=lexicase
 SELECTION_SCHEME_4=epsilon_lexicase
 
 ###### Treatments #######
-TREATMENT__DIAGNOSTIC__3__SELECTION__1__MIN=1
-TREATMENT__DIAGNOSTIC__3__SELECTION__1__MAX=30
-
 TREATMENT__DIAGNOSTIC__1__SELECTION__1__MIN=1
 TREATMENT__DIAGNOSTIC__1__SELECTION__1__MAX=30
 
@@ -225,11 +222,7 @@ elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__5__SELECTION__4__MIN}
   DIAGNOSTIC=4
   SELECTION_SCHEME=3
   MABE_FILE=../config/PhylodiversityDiagnostics.mabe
-if [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__SELECTION__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__SELECTION__1__MAX} ] ; then
-   NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
-   DIAGNOSTIC=${DIAGNOSTIC_3}
-   SELECTION_SCHEME=${SELECTION_SCHEME_1}
-   MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+
 else
   echo "${SEED} from ${PROBLEM} failed to launch" >> /mnt/gs18/scratch/users/shahban1/ps-coh-failtolaunch.txt
 fi
