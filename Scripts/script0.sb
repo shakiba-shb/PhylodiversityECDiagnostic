@@ -235,6 +235,6 @@ RUN_DIR=${DATA_DIR}/DIAGNOSTIC_${DIAGNOSTIC}_SELECTION_${SELECTION_SCHEME}/${NAM
 mkdir ${DATA_DIR}/DIAGNOSTIC_${DIAGNOSTIC}_SELECTION_${SELECTION_SCHEME}
 mkdir -p ${RUN_DIR}
 
-echo "../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set eval_diagnostic=${DIAGNOSTIC} --set fit_file.filename=\\\"${RUN_DIR}/output.csv\\\" --set sys.snapshot_file_root_name=\\\"${RUN_DIR}/phylogeny\\\" --set sys.data_file_name=\\\"${RUN_DIR}/phylogenetic_data.csv\\\" --set selection_type=${SELECTION_SCHEME}> run.log" > ./cmd-coh.txt
+echo "../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set diagnostic=${DIAGNOSTIC} --set fit_file.filename=\\\"${RUN_DIR}/output.csv\\\" --set sys.snapshot_file_root_name=\\\"${RUN_DIR}/phylogeny\\\" --set sys.data_file_name=\\\"${RUN_DIR}/phylogenetic_data.csv\\\" --set selection_type=${SELECTION_SCHEME}> run.log" > ./cmd-coh.txt
 
-../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set eval_diagnostic=${DIAGNOSTIC} --set fit_file.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\" --set selection_type=${SELECTION_SCHEME}> ${RUN_DIR}/run.log
+../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set diagnostic=${DIAGNOSTIC} --set fit_file.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\" --set selection_type=${SELECTION_SCHEME}> ${RUN_DIR}/run.log
