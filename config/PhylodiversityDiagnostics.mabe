@@ -35,7 +35,7 @@ SelectTournament select_tourny { // Select the top fitness organisms from random
 
 SelectLexicase select_l {       // Shuffle traits each time an organism is chose for replication.
   fitness_traits = "scores";          // Which traits provide the fitness values to use?
-  epsilon = 0;                  // Range from max value to be preserved? (fraction of max)
+  epsilon = .5;                  // Range from max value to be preserved? (fraction of max)
   sample_traits = 0;            // Number of test cases to use each generation (0=all)
 };
 
