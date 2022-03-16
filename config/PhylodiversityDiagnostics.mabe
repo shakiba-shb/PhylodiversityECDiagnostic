@@ -4,7 +4,7 @@ Population next_pop;            // Collection of organisms
 Var pop_size = 500;           // Local value variable.
 Var generations = 20000;       // Local value variable.
 Var selection_type = 0;
-Var diagnostic = 0;
+Var diagnostic = 1;
 
 EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diagnostic problem.
   vals_trait = "vals";          // Which trait stores the values to evaluate?
@@ -17,12 +17,6 @@ EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diag
                                 //  diversity: Only count max value; all others must be low.
                                 //  weak_diversity: Only count max value; all others locked at zero.
 };
-
-IF(diagnostic==0){eval_diagnostic.diagnostic="exploit";};
-IF(diagnostic==1){eval_diagnostic.diagnostic="struct_exploit";};
-IF(diagnostic==2){eval_diagnostic.diagnostic="explore";};
-IF(diagnostic==3){eval_diagnostic.diagnostic="diversity";};
-IF(diagnostic==4){eval_diagnostic.diagnostic="weak_diversity";};
 
 
 SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
@@ -87,6 +81,12 @@ fit_file.ADD_COLUMN( "scores:unique", "main_pop.CALC_RICHNESS('scores')" );
 
 
 @START() {
+  IF(diagnostic==0){eval_diagnostic.diagnostic="exploit";};
+  IF(diagnostic==1){eval_diagnostic.diagnostic="struct_exploit";};
+  IF(diagnostic==2){eval_diagnostic.diagnostic="explore";};
+  IF(diagnostic==3){eval_diagnostic.diagnostic="diversity";};
+  IF(diagnostic==4){eval_diagnostic.diagnostic="weak_diversity";};
+
   PRINT("\nConfiguration:");
   PRINT("random_seed = ", random_seed);  
   PRINT("selection_type = ", selection_type);  
