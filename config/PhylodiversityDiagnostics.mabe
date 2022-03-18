@@ -3,8 +3,8 @@ Population main_pop;            // Collection of organisms
 Population next_pop;            // Collection of organisms
 Var pop_size = 500;           // Local value variable.
 Var generations = 20000;       // Local value variable.
-Var selection_type = 0;
-Var diagnostic = 1;
+Var selection_type = 0;  // 0 = tournament, 1 = lexicase, 2 = fitness sharing, 3 = epsilon lexicase, 4 = random
+Var diagnostic = 1;  // 0 = exploit, 1 = struct_exploit, 2 = explore, 3 = diversity, 4 = weak_diversity
 
 EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diagnostic problem.
   vals_trait = "vals";          // Which trait stores the values to evaluate?
@@ -38,9 +38,6 @@ SelectLexicase select_l {       // Shuffle traits each time an organism is chose
   epsilon = 0.5;                  // Range from max value to be preserved? (fraction of max)
   sample_traits = 0;            // Number of test cases to use each generation (0=all)
 };
-
-IF(selection_type != 3){select_l.epsilon=0;};
-IF(selection_type == 4){select_tourny.tournament_size = 1;};
 
 AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   store_outside = 0;            // Store all taxa that ever existed.(1 = TRUE)
@@ -81,6 +78,9 @@ fit_file.ADD_COLUMN( "scores:unique", "main_pop.CALC_RICHNESS('scores')" );
 
 
 @START() {
+  IF(selection_type != 3){select_l.epsilon=0;};
+  IF(selection_type == 4){select_tourny.tournament_size = 1;};
+
   IF(diagnostic==0){eval_diagnostic.diagnostic="exploit";};
   IF(diagnostic==1){eval_diagnostic.diagnostic="struct_exploit";};
   IF(diagnostic==2){eval_diagnostic.diagnostic="explore";};
