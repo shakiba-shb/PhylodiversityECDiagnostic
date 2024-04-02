@@ -122,151 +122,151 @@ if [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__0__SELECTION__0__MIN} ]
   NAME=DIA_${DIAGNOSTIC_0}__SEED_${SEED}
   DIAGNOSTIC=0
   SELECTION_SCHEME=0
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__1__SELECTION__0__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__1__SELECTION__0__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_1}__SEED_${SEED}
   DIAGNOSTIC=1
   SELECTION_SCHEME=0
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__2__SELECTION__0__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__2__SELECTION__0__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_2}__SEED_${SEED}
   DIAGNOSTIC=2
   SELECTION_SCHEME=0
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__SELECTION__0__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__SELECTION__0__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
   DIAGNOSTIC=3
   SELECTION_SCHEME=0
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__4__SELECTION__0__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__4__SELECTION__0__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_4}__SEED_${SEED}
   DIAGNOSTIC=4
   SELECTION_SCHEME=0
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__0__SELECTION__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__0__SELECTION__1__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_0}__SEED_${SEED}
   DIAGNOSTIC=0
   SELECTION_SCHEME=1
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__1__SELECTION__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__1__SELECTION__1__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_1}__SEED_${SEED}
   DIAGNOSTIC=1
   SELECTION_SCHEME=1
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__2__SELECTION__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__2__SELECTION__1__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_2}__SEED_${SEED}
   DIAGNOSTIC=2
   SELECTION_SCHEME=1
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__SELECTION__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__SELECTION__1__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
   DIAGNOSTIC=3
   SELECTION_SCHEME=1
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__4__SELECTION__1__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__4__SELECTION__1__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_4}__SEED_${SEED}
   DIAGNOSTIC=4
   SELECTION_SCHEME=1 
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__0__SELECTION__2__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__0__SELECTION__2__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_0}__SEED_${SEED}
   DIAGNOSTIC=0
   SELECTION_SCHEME=2
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__1__SELECTION__2__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__1__SELECTION__2__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_1}__SEED_${SEED}
   DIAGNOSTIC=1
   SELECTION_SCHEME=2
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC_2__SELECTION__2__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__2__SELECTION__2__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_2}__SEED_${SEED}
   DIAGNOSTIC=2
   SELECTION_SCHEME=2
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__SELECTION__2__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__SELECTION__2__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
   DIAGNOSTIC=3
   SELECTION_SCHEME=2
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__4__SELECTION__2__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__4__SELECTION__2__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_4}__SEED_${SEED}
   DIAGNOSTIC=4
   SELECTION_SCHEME=2
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
   
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__0__SELECTION__3__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__0__SELECTION__3__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_0}__SEED_${SEED}
   DIAGNOSTIC=0
   SELECTION_SCHEME=3
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__1__SELECTION__3__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__1__SELECTION__3__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_1}__SEED_${SEED}
   DIAGNOSTIC=1
   SELECTION_SCHEME=3
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__2__SELECTION__3__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__2__SELECTION__3__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_2}__SEED_${SEED}
   DIAGNOSTIC=2
   SELECTION_SCHEME=3
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__SELECTION__3__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__SELECTION__3__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
   DIAGNOSTIC=3
   SELECTION_SCHEME=3
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__4__SELECTION__3__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__4__SELECTION__3__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_4}__SEED_${SEED}
   DIAGNOSTIC=4
   SELECTION_SCHEME=3
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__0__SELECTION__4__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__0__SELECTION__4__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_0}__SEED_${SEED}
   DIAGNOSTIC=0
   SELECTION_SCHEME=4
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__1__SELECTION__4__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__1__SELECTION__4__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_1}__SEED_${SEED}
   DIAGNOSTIC=1
   SELECTION_SCHEME=4
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__2__SELECTION__4__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__2__SELECTION__4__MAX} ] ; then
 NAME=DIA_${DIAGNOSTIC_2}__SEED_${SEED}
 DIAGNOSTIC=2
 SELECTION_SCHEME=4
-MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__3__SELECTION__4__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__3__SELECTION__4__MAX} ] ; then
 NAME=DIA_${DIAGNOSTIC_3}__SEED_${SEED}
 DIAGNOSTIC=3
 SELECTION_SCHEME=4
-MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 elif [ ${SLURM_ARRAY_TASK_ID} -ge ${TREATMENT__DIAGNOSTIC__4__SELECTION__4__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${TREATMENT__DIAGNOSTIC__4__SELECTION__4__MAX} ] ; then
   NAME=DIA_${DIAGNOSTIC_4}__SEED_${SEED}
   DIAGNOSTIC=4
   SELECTION_SCHEME=4
-  MABE_FILE=../config/PhylodiversityDiagnostics.mabe
+  MABE_FILE=config/PhylodiversityDiagnostics.mabe
 
 else
   echo "${SEED} from ${PROBLEM} failed to launch" >> /mnt/gs18/scratch/users/shahban1/ps-coh-failtolaunch.txt
@@ -280,6 +280,6 @@ RUN_DIR=${DATA_DIR}/DIAGNOSTIC_${DIAGNOSTIC}_SELECTION_${SELECTION_SCHEME}/${NAM
 mkdir ${DATA_DIR}/DIAGNOSTIC_${DIAGNOSTIC}_SELECTION_${SELECTION_SCHEME}
 mkdir -p ${RUN_DIR}
 
-echo "../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set diagnostic=${DIAGNOSTIC} --set fit_file.filename=\\\"${RUN_DIR}/output.csv\\\" --set sys.snapshot_file_root_name=\\\"${RUN_DIR}/phylogeny\\\" --set sys.data_file_name=\\\"${RUN_DIR}/phylogenetic_data.csv\\\" --set selection_type=${SELECTION_SCHEME}> run.log" > ./cmd-coh.txt
+echo "../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set diagnostic=${DIAGNOSTIC} --set fit_file.filename=\\\"${RUN_DIR}/output.csv\\\" --set sys.snapshot_file_root_name=\\\"${RUN_DIR}/phylogeny\\\" --set sys.data_file_name=\\\"${RUN_DIR}/phylogenetic_data.csv\\\" --set selection_type=${SELECTION_SCHEME}> run.log" > ./cmd-coh.txt
 
-../../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set diagnostic=${DIAGNOSTIC} --set fit_file.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\" --set selection_type=${SELECTION_SCHEME}> ${RUN_DIR}/run.log
+../MABE2/build/MABE -f ${MABE_FILE} --set random_seed=${SEED} --set diagnostic=${DIAGNOSTIC} --set fit_file.filename=\"${RUN_DIR}/output.csv\" --set sys.snapshot_file_root_name=\"${RUN_DIR}/phylogeny\" --set sys.data_file_name=\"${RUN_DIR}/phylogenetic_data.csv\" --set selection_type=${SELECTION_SCHEME}> ${RUN_DIR}/run.log
