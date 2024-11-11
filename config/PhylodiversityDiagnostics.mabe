@@ -19,14 +19,14 @@ EvalDiagnostic eval_diagnostic { // Evaluate set of values with a specified diag
 };
 
 
-SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
-  tournament_size = 8;          // Number of orgs in each tournament
-
-  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
-  sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
-  alpha = 1;                    // Sharing function exponent
-  sharing_threshold = 2;// How similar things need to be to share fitness
-};
+//SelectFitnessSharing select_f { // Select the top fitness organisms from random subgroups for replication.
+//  tournament_size = 8;          // Number of orgs in each tournament
+//
+//  fitness_trait = "fitness";    // Which trait provides the fitness value to use?
+// sharing_trait = "vals";       // Which trait should we do fitness sharing based on?
+//  alpha = 1;                    // Sharing function exponent
+//  sharing_threshold = 2;// How similar things need to be to share fitness
+//};
 
 SelectTournament select_tourny { // Select the top fitness organisms from random subgroups for replication.
   tournament_size = 7;          // Number of orgs in each tournament
@@ -42,7 +42,7 @@ SelectLexicase select_l {       // Shuffle traits each time an organism is chose
 AnalyzeSystematics sys {        // Module to track the population's phylogeny.
   store_outside = 0;            // Store all taxa that ever existed.(1 = TRUE)
   store_ancestors = 1;          // Store all ancestors of extant taxa.(1 = TRUE)
-  taxon_info = "vals";    // Which trait should we identify unique taxa based on
+  taxon_info = "scores";    // Which trait should we identify unique taxa based on
   data_file_name = "phylogenetic_data.csv";// Filename for systematics data file.
   snapshot_file_root_name = "phylogeny";// Filename for snapshot files (will have update number and .csv appended to end)
   snapshot_updates = "0:100:20000";    // Which updates should we output a snapshot of the phylogeny?
@@ -120,10 +120,10 @@ fit_file.ADD_COLUMN( "scores:unique", "main_pop.CALC_RICHNESS('scores')" );
     select_l.SELECT(main_pop, next_pop, pop_size);
   }
   
-  IF(selection_type == 2) {
+//  IF(selection_type == 2) {
     // Fitness Sharing selection
-    select_f.SELECT(main_pop, next_pop, pop_size);
-  }
+//    select_f.SELECT(main_pop, next_pop, pop_size);
+//  }
   
   IF(selection_type == 3) {
     // epsilon lexicase selection
