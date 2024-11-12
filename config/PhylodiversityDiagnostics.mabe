@@ -71,11 +71,13 @@ ValsOrg vals_org {              // Organism consisting of a series of N floating
 };
 
 DataFile fit_file { filename="output.csv"; };
+fit_file.ADD_COLUMN( "Generation", "ud" );
 fit_file.ADD_COLUMN( "Mean Fitness", "main_pop.CALC_MEAN('fitness')" );
 fit_file.ADD_COLUMN( "Maximum Fitness", "main_pop.CALC_MAX('fitness')" );
 fit_file.ADD_COLUMN( "scores:entropy", "main_pop.CALC_ENTROPY('scores')" ); 
 fit_file.ADD_COLUMN( "scores:unique", "main_pop.CALC_RICHNESS('scores')" ); 
 fit_file.ADD_COLUMN( "CollectiveScore", "eval_diagnostic.COLLECTIVE_SCORE(main_pop)");
+fit_file.ADD_COLUMN( "Mean Pairwise Distance", "sys.CheckMeanPairwiseDistance()");
 
 
 @START() {
@@ -109,6 +111,7 @@ fit_file.ADD_COLUMN( "CollectiveScore", "eval_diagnostic.COLLECTIVE_SCORE(main_p
         "  AveFitness=", main_pop.CALC_MEAN("fitness"),
         "  MaxFitness=", main_pop.CALC_MAX("fitness"),
         "  CollectiveScore=", eval_diagnostic.COLLECTIVE_SCORE(main_pop),
+        "  MeanPairwiseDistance=", sys.CheckMeanPairwiseDistance(),
        );
   fit_file.WRITE();
 
